@@ -1,14 +1,28 @@
-import { IconButton, Modal } from "@mui/material";
+import {
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
+} from "@mui/material";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import item13 from "../../assets/items/item-13.png";
 import React, { useState } from "react";
-import WalletConnect from "../connectButton/WalletConnect";
 
 const price = 38;
 
+const currencies = ["MATIC", "USDT", "USDC", "BUSD", "WETH", "BNB"];
+
 const MintPage = ({ handleClose, open }) => {
   const [quantity, setQuantity] = useState(1);
+
+  const [currency, setCurrency] = React.useState(currencies[0]);
+
+  const handleChange = (event) => {
+    setCurrency(event.target.value);
+  };
 
   return (
     <Modal
@@ -131,6 +145,30 @@ const MintPage = ({ handleClose, open }) => {
               </div>
             </div>
             <p>{price * quantity} USD</p>
+          </div>
+          <div className='form-container'>
+            <FormControl
+              variant='filled'
+              sx={{ m: 1, width: "100%", color: "white", marginTop: "1rem" }}
+            >
+              <InputLabel
+                id='demo-simple-select-filled-label'
+                sx={{ color: "white" }}
+              >
+                Currency
+              </InputLabel>
+              <Select
+                labelId='demo-simple-select-filled-label'
+                id='demo-simple-select-filled'
+                value={currency}
+                onChange={handleChange}
+                sx={{ color: "white" }}
+              >
+                {currencies.map((item) => {
+                  return <MenuItem value={item}>{item}</MenuItem>;
+                })}
+              </Select>
+            </FormControl>
           </div>
           <button className='mint-btn' style={{ backgroundColor: "#FD562A" }}>
             MINT NOW
