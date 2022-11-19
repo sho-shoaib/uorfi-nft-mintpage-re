@@ -11,7 +11,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import item13 from "../../assets/items/item-13.png";
 import React, { useState } from "react";
 
-const price = 38;
+const price = 35;
 
 const currencies = ["MATIC", "USDT", "USDC", "BUSD", "WETH", "BNB"];
 
