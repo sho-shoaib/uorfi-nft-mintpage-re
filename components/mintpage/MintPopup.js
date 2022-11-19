@@ -24,6 +24,10 @@ const MintPage = ({ handleClose, open }) => {
     setCurrency(event.target.value);
   };
 
+  const handleMint = () => {
+    console.log({ quantity, currency });
+  };
+
   return (
     <Modal
       open={open}
@@ -170,7 +174,11 @@ const MintPage = ({ handleClose, open }) => {
               </Select>
             </FormControl>
           </div>
-          <button className='mint-btn' style={{ backgroundColor: "#FD562A" }}>
+          <button
+            onClick={handleMint}
+            className='mint-btn'
+            style={{ backgroundColor: "#FD562A" }}
+          >
             MINT NOW
           </button>
           <div style={{ textAlign: "center", marginTop: "1rem" }}>
